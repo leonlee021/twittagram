@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import styles from './styles/styles.css'
+import Post from './Post'
 
 function App() {
   return (
@@ -9,14 +10,14 @@ function App() {
       </div>
       <div class="app__feed">
         <div className="app__feed__left">
-          <h2>feed__left</h2>
+          {/* <h2>feed__left</h2> */}
+          <Post />
+          <Post />
         </div>
         <div className="app__feed__right">
           <h2>feed__right</h2>
         </div>
       </div>
-      {/* Header */}
-      {/* Post */}
     </div >
   );
 }

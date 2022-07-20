@@ -1,0 +1,24 @@
+.post__image{
+    width: 100%;
+    object-fit: contain;
+}
+
+h4{
+    font-weight: normal;
+}
+
+.post__header{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+}
+
+.post__caption{
+    padding: 10px;
+}
+
+.post{
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 2%;
+}

@@ -55,7 +55,8 @@ h1 {
 
 .app__header {
   background-color: white;
-  padding: 25px 300px;
+  padding: 25px 15%;
+  border: 1px solid #dadada;
 }
 
 .app__feed {
@@ -70,7 +71,7 @@ h1 {
   background-color: white;
   width: 40%;
   height: 100vh;
-  margin-left: 350px;
+  margin-left: 20%;
   border-radius: 2%;
 }
 

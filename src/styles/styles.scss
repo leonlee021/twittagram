@@ -52,7 +52,8 @@ h1{
 
 .app__header{
     background-color: rgb(255, 255, 255);
-    padding: 25px 300px;
+    padding: 25px 15%;
+    border: 1px solid rgb(218, 218, 218);
 }
 
 .app__feed{
@@ -65,7 +66,7 @@ h1{
     background-color: rgb(255, 255, 255);
     width: 40%;
     height: 100vh;
-    margin-left: 350px;
+    margin-left: 20%;
     border-radius: 2%;
 }
 
@@ -75,4 +76,3 @@ h1{
     border-radius: 2%;
     height: 40vh;
 }
-
