@@ -79,5 +79,8 @@ h1 {
   width: 20%;
   border-radius: 2%;
   height: 40vh;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
 }
 /*# sourceMappingURL=styles.css.map */
