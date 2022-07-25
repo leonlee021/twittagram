@@ -3,16 +3,41 @@ import logo from './logo.svg';
 import styles from './styles/styles.css'
 import Post from './Post'
 import Profile from './Profile'
-import { db } from './firebase'
-import { doc, onSnapshot, collection } from '@firebase/firestore';
+import { db, auth, createUserWithEmailAndPassword, updateProfile } from './firebase'
+import { onSnapshot, collection } from '@firebase/firestore';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import { signInWithEmailAndPassword, signOut } from '@firebase/auth';
 
 function App() {
   const [posts, setPosts] = useState([]);
-
-  const postsCol = collection(db,'posts')
+  const [open, setOpen] = useState('');
+  const [openSignIn, setOpenSignIn] = useState(false);
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [user, setUser] = useState(null);
 
   useEffect(()=>{
-    onSnapshot(postsCol, snapshot => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser){
+        console.log(authUser);
+        setUser(authUser);
+      } else {
+        setUser(null);
+      }
+    })
+
+    return() => {
+      unsubscribe();
+    }
+  },[user, username]);
+
+  useEffect(()=>{
+    onSnapshot(collection(db,'posts'), snapshot => {
       setPosts(snapshot.docs.map(doc=>({
         id: doc.id,
         post: doc.data()
@@ -20,21 +45,117 @@ function App() {
     })
   },[])
 
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const signUp = (event) => {
+    event.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        return updateProfile(userCredential.user, {
+          displayName: username,
+        })
+      }) 
+      .catch((error) => alert(error.message));
+    setOpen(false)
+  }
+
+  const signIn = (event) => {
+    event.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+    .catch((error) => alert(error.message));
+    setOpenSignIn(false)
+  }
+
   return (
     <div className="app">
       <div className="app__header">
         <h1>Twittagram</h1>
       </div>
       <div className="app__feed">
-        <div className="app__feed__left">
+        <div className="app__scroll">
           {
             posts.map(({id, post}) => (
               <Post key={id} username={post.username} imageURL={post.imageURL} caption={post.caption} />
             ))
           }
         </div>
-        <div className="app__feed__right">
+        <div className="app__profile">
           <Profile />
+          <Modal
+            open={open}
+            onClose={() => setOpen(false)}
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                <form className="app__signup">
+                  <h1>Twittagram</h1>
+                  <Input
+                    type = 'text'
+                    placeholder = 'username'
+                    value = {username}
+                    onChange = {(e) => setUsername(e.target.value)}
+                  />
+                  <Input
+                    type = 'text'
+                    placeholder = 'email'
+                    value = {email}
+                    onChange = {(e) => setEmail(e.target.value)}
+                  />
+                  <Input
+                    type = 'text'
+                    placeholder = 'password'
+                    value = {password}
+                    onChange = {(e) => setPassword(e.target.value)}
+                  />
+                  <Button type = "submit" onClick = {signUp}>Sign Up</Button>
+                </form>
+              </Typography>
+            </Box>
+          </Modal>
+          <Modal
+            open={openSignIn}
+            onClose={() => setOpenSignIn(false)}
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                <form className="app__signup">
+                  <h1>Twittagram</h1>
+                  <Input
+                    type = 'text'
+                    placeholder = 'email'
+                    value = {email}
+                    onChange = {(e) => setEmail(e.target.value)}
+                  />
+                  <Input
+                    type = 'text'
+                    placeholder = 'password'
+                    value = {password}
+                    onChange = {(e) => setPassword(e.target.value)}
+                  />
+                  <Button type = "submit" onClick = {signIn}>Sign In</Button>
+                </form>
+              </Typography>
+            </Box>
+          </Modal>
+
+          {user ? (
+            <Button onClick={() => signOut(auth)}>Logout</Button>
+          ):(
+            <div className="app__profileContainer">
+              <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
+              <Button onClick={() => setOpen(true)}>Sign Up</Button>
+            </div>
+          )}
         </div>
       </div>
     </div >
