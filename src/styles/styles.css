@@ -96,4 +96,13 @@ h1 {
       -ms-flex-align: center;
           align-items: center;
 }
+
+.app__profileContainer {
+  text-transform: none;
+}
+
+.app__button {
+  text-transform: none;
+  font-size: 2rem;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -11,6 +11,8 @@ import Input from '@mui/material/Input';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { signInWithEmailAndPassword, signOut } from '@firebase/auth';
+import PostUpload from './PostUpload'
+
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -90,7 +92,8 @@ function App() {
           }
         </div>
         <div className="app__profile">
-          <Profile />
+          {user?.displayName ? (<Profile username = {user.displayName}/>) : ('')} 
+
           <Modal
             open={open}
             onClose={() => setOpen(false)}
@@ -148,14 +151,19 @@ function App() {
             </Box>
           </Modal>
 
-          {user ? (
-            <Button onClick={() => signOut(auth)}>Logout</Button>
-          ):(
-            <div className="app__profileContainer">
-              <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-              <Button onClick={() => setOpen(true)}>Sign Up</Button>
-            </div>
-          )}
+          <div className="app__profileContainer">
+            {user ? (
+              <Button className = "app__button" onClick={() => signOut(auth)}>Logout</Button>
+            ):(
+              <div className="app__signInSignUp">
+                <Button className = "app__button" onClick={() => setOpenSignIn(true)}>Sign In</Button>
+                <Button className = "app__button" onClick={() => setOpen(true)}>Sign Up</Button>
+              </div>
+            )}
+            {user?.displayName ? (
+              <PostUpload username = {user.displayName}/> 
+            ): ('')}
+          </div>
         </div>
       </div>
     </div >
