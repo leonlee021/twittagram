@@ -67,9 +67,10 @@ function App() {
         return updateProfile(userCredential.user, {
           displayName: username,
         })
-      }) 
+      })
       .catch((error) => alert(error.message));
     setOpen(false)
+
   }
 
   const signIn = (event) => {
@@ -93,7 +94,7 @@ function App() {
           }
         </div>
         <div className="app__profile">
-          {user?.displayName ? (<Profile username = {user.displayName}/>) : ('')} 
+          {user ? (<Profile username = {user.displayName}/>) : ('')} 
 
           <Modal
             open={open}
