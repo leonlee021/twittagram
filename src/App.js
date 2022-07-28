@@ -4,7 +4,7 @@ import styles from './styles/styles.css'
 import Post from './Post'
 import Profile from './Profile'
 import { db, auth, createUserWithEmailAndPassword, updateProfile } from './firebase'
-import { onSnapshot, collection } from '@firebase/firestore';
+import { onSnapshot, collection, query, orderBy } from '@firebase/firestore';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { signInWithEmailAndPassword, signOut } from '@firebase/auth';
 import PostUpload from './PostUpload'
+import { SessionProvider } from 'next-auth/react';
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
   },[user, username]);
 
   useEffect(()=>{
-    onSnapshot(collection(db,'posts'), snapshot => {
+    onSnapshot(query(collection(db,'posts'),orderBy('timestamp','desc')), snapshot => {
       setPosts(snapshot.docs.map(doc=>({
         id: doc.id,
         post: doc.data()
