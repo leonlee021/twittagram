@@ -2,7 +2,7 @@
   "name": "instagram-twitter-mash",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://leonlee021.github.io",
+  "homepage": "https://leonlee021.github.io/instagram-twitter-mash",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
