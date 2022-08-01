@@ -70,7 +70,6 @@ function App() {
       })
       .catch((error) => alert(error.message));
     setOpen(false)
-
   }
 
   const signIn = (event) => {
@@ -80,21 +79,37 @@ function App() {
     setOpenSignIn(false)
   }
 
+
   return (
     <div className="app">
       <div className="app__header">
-        <h1>Twittagram</h1>
+        <a href="#"><h1>Twittagram</h1></a>
+        {user ? (
+              <PostUpload username = {user.displayName}/> 
+            ): ('')}
       </div>
       <div className="app__feed">
         <div className="app__scroll">
           {
             posts.map(({id, post}) => (
-              <Post key={id} username={post.username} imageURL={post.imageURL} caption={post.caption} />
+              <Post key={id} id = {id} username={post.username} imageURL={post.imageURL} caption={post.caption} />
             ))
           }
         </div>
         <div className="app__profile">
-          {user ? (<Profile username = {user.displayName}/>) : ('')} 
+          <div className="app__userline">
+            {user ? (<Profile username = {user.displayName}/>) : ('')}
+            <div className="app__profileContainer">
+              {user ? (
+                <Button className = "app__button" onClick={() => signOut(auth)}>Logout</Button>
+              ):(
+                <div className="app__signInSignUp">
+                  <Button className = "app__button" onClick={() => setOpenSignIn(true)}>Sign In</Button>
+                  <Button className = "app__button" onClick={() => setOpen(true)}>Sign Up</Button>
+                </div>
+              )}
+            </div>
+          </div>
 
           <Modal
             open={open}
@@ -152,20 +167,6 @@ function App() {
               </Typography>
             </Box>
           </Modal>
-
-          <div className="app__profileContainer">
-            {user ? (
-              <Button className = "app__button" onClick={() => signOut(auth)}>Logout</Button>
-            ):(
-              <div className="app__signInSignUp">
-                <Button className = "app__button" onClick={() => setOpenSignIn(true)}>Sign In</Button>
-                <Button className = "app__button" onClick={() => setOpen(true)}>Sign Up</Button>
-              </div>
-            )}
-            {user?.displayName ? (
-              <PostUpload username = {user.displayName}/> 
-            ): ('')}
-          </div>
         </div>
       </div>
     </div >

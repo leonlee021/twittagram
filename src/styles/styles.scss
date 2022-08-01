@@ -56,6 +56,14 @@ h1{
     border: 1px solid rgb(218, 218, 218);
     position: sticky;
     top: 0px;
+    cursor: pointer;
+    display: flex;
+    gap: 70%;
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }
 
 .app__feed{
@@ -88,9 +96,23 @@ h1{
 
 .app__profileContainer{
     text-transform: none;
+    width: 100%;
 }
 
 .app__button{
     text-transform: none;
     font-size: 2rem;
+}
+
+.app__userline{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 13px;
+}
+
+.app__signInSignUp{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 30px;
 }

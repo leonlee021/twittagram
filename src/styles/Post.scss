@@ -27,3 +27,25 @@ h4{
 .post__username{
     font-size: 1.1rem;
 }
+
+.post__comments{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 15px;
+}
+
+.post__commentbox{
+    flex: 1;
+    height: 20px;
+    padding: 5px;
+}
+
+.post__commentbutton{
+    flex: 0;
+    text-decoration: none;
+    background-color: white;
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1%;
+}

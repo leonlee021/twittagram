@@ -60,6 +60,16 @@ h1 {
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 70%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 .app__feed {
@@ -102,10 +112,34 @@ h1 {
 
 .app__profileContainer {
   text-transform: none;
+  width: 100%;
 }
 
 .app__button {
   text-transform: none;
   font-size: 2rem;
+}
+
+.app__userline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 10px 13px;
+}
+
+.app__signInSignUp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 10px 30px;
 }
 /*# sourceMappingURL=styles.css.map */
