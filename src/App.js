@@ -12,8 +12,6 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { signInWithEmailAndPassword, signOut } from '@firebase/auth';
 import PostUpload from './PostUpload'
-import { SessionProvider } from 'next-auth/react';
-
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -91,8 +89,13 @@ function App() {
       <div className="app__feed">
         <div className="app__scroll">
           {
+            user ? (
             posts.map(({id, post}) => (
-              <Post key={id} id = {id} username={post.username} imageURL={post.imageURL} caption={post.caption} />
+              <Post key={id} id = {id} username={post.username} imageURL={post.imageURL} caption={post.caption} commenter = {user.displayName}/>
+            ))
+            ):
+            posts.map(({id, post}) => (
+              <Post key={id} id = {id} username={post.username} imageURL={post.imageURL} caption={post.caption}/>
             ))
           }
         </div>

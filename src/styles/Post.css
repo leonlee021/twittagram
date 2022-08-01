@@ -21,6 +21,7 @@ h4 {
 
 .post__caption {
   padding: 10px;
+  padding-bottom: 0px;
 }
 
 .post {
@@ -61,5 +62,34 @@ h4 {
   font-weight: bold;
   cursor: pointer;
   padding: 1%;
+}
+
+.post__commentscroll {
+  max-height: 70px;
+  overflow-y: scroll;
+}
+
+.post__commentdiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post__commentelement {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0px 10px;
+  padding-top: 7px;
+  margin-left: 0;
 }
 /*# sourceMappingURL=Post.css.map */

@@ -16,6 +16,7 @@ h4{
 
 .post__caption{
     padding: 10px;
+    padding-bottom: 0px;
 }
 
 .post{
@@ -48,4 +49,23 @@ h4{
     font-weight: bold;
     cursor: pointer;
     padding: 1%;
+}
+
+.post__commentscroll{
+    max-height: 70px;
+    overflow-y: scroll;
+}
+
+.post__commentdiv{
+    display: flex;
+    align-items: center;
+}
+
+.post__commentelement{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    padding-top: 7px;
+    margin-left: 0;
 }
