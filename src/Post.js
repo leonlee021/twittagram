@@ -7,7 +7,7 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 import { HeartIcon } from '@heroicons/react/solid'
 
-function Post({ id, username, imageURL, caption, commenter, type }) {
+function Post({ id, username, imageURL, caption, commenter, type, timestamp }) {
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
@@ -131,7 +131,12 @@ function Post({ id, username, imageURL, caption, commenter, type }) {
                   src='/static/images/avatar/1.jpg'
               />
               <div class="tweet__words">
-                <h3 className="tweet__username">{username} <span className="tweet__atUsername">@{username}</span></h3>
+                <div className="tweet__usernameAndTime">
+                  <h3 className="tweet__username">{username} <span className="tweet__atUsername">@{username}</span>&nbsp;&nbsp;•</h3>
+                  <Moment fromNow>
+                    {timestamp?.toDate()}
+                  </Moment>
+                </div>
                 <h4 className="tweet__caption">{caption}</h4>
               </div>
           </div>

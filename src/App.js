@@ -96,11 +96,11 @@ function App() {
           {
             user ? (
             posts.map(({id, post}) => (
-              <Post key={id} id = {id} username={post.username} imageURL={post.imageURL} caption={post.caption} commenter = {user.displayName} type = {post.type}/>
+              <Post key={id} id = {id} username={post.username} imageURL={post.imageURL} caption={post.caption} commenter = {user.displayName} type = {post.type} timestamp = {post.timestamp}/>
             ))
             ):
             posts.map(({id, post}) => (
-              <Post key={id} id = {id} username={post.username} imageURL={post.imageURL} caption={post.caption}/>
+              <Post key={id} id = {id} username={post.username} imageURL={post.imageURL} caption={post.caption} type = {post.type} timestamp = {post.timestamp}/>
             ))
           }
         </div>
