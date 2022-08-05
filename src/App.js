@@ -62,7 +62,7 @@ function App() {
     event.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        return updateProfile(userCredential.user, {
+        updateProfile(userCredential.user, {
           displayName: username,
         })
       })
@@ -79,6 +79,7 @@ function App() {
 
 
   return (
+    <>
     <div className="app">
       <div className="app__header">
         <a href="#"><h1>Twittagram</h1></a>
@@ -140,6 +141,7 @@ function App() {
                     value = {password}
                     onChange = {(e) => setPassword(e.target.value)}
                   />
+                  <p className="app__signupDescription">Reload the page after signing up!</p>
                   <Button type = "submit" onClick = {signUp}>Sign Up</Button>
                 </form>
               </Typography>
@@ -173,6 +175,7 @@ function App() {
         </div>
       </div>
     </div >
+  </>
   );
 }
 

@@ -142,4 +142,10 @@ a {
           justify-content: space-between;
   margin: 10px 30px;
 }
+
+.app__signupDescription {
+  font-size: 0.9rem;
+  margin: 10px;
+  font-weight: 525;
+}
 /*# sourceMappingURL=styles.css.map */

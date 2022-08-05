@@ -28,6 +28,7 @@ h4 {
   border: 1px solid #dadada;
   border-radius: 2%;
   margin-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .post__username {
@@ -91,5 +92,24 @@ h4 {
   padding: 0px 10px;
   padding-top: 7px;
   margin-left: 0;
+}
+
+#likeButton {
+  width: 5%;
+  margin: 2px 10px;
+  cursor: pointer;
+  color: silver;
+}
+
+#likeButtonFilled {
+  color: red;
+  width: 5%;
+  margin: 2px 10px;
+  cursor: pointer;
+}
+
+.post__likesCount {
+  margin: 2px 10px;
+  font-weight: bold;
 }
 /*# sourceMappingURL=Post.css.map */
