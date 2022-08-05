@@ -52,4 +52,8 @@ input[type="file"] {
 .h-6 {
   width: 30%;
 }
+
+.h-6 :hover {
+  background-color: white;
+}
 /*# sourceMappingURL=PostUpload.css.map */

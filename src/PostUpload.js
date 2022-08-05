@@ -36,7 +36,8 @@ function PostUpload({username}) {
       const docRef = await addDoc(collection(db, 'posts'),{
         username: username,
         caption: captionRef.current.value,
-        timestamp: serverTimestamp()
+        timestamp: serverTimestamp(),
+        type: 'insta'
       })
 
       const imageRef = ref(storage, `images/${docRef.id}`);

@@ -13,22 +13,10 @@ import { Avatar } from '@mui/material'
 
 
 function TweetUpload({username}) {
-    const filePickerRef = useRef(null);
     const [loading, setLoading] = useState(false);
     const captionRef = useRef(null);
     const [selectedFile, setSelectedFile] = useState(null)
     const [openTweet, setOpenTweet] = useState(false);
-
-    const handleChange = (e) => {
-      const reader = new FileReader();
-        if (e.target.files[0]){
-            reader.readAsDataURL(e.target.files[0]);
-        }
-
-        reader.onload = (readerEvent) => {
-          setSelectedFile(readerEvent.target.result);
-        }
-    }
 
     const handleTweetUpload = async () => {
       if (loading) return;
@@ -37,7 +25,8 @@ function TweetUpload({username}) {
       const docRef = await addDoc(collection(db, 'posts'),{
         username: username,
         caption: captionRef.current.value,
-        timestamp: serverTimestamp()
+        timestamp: serverTimestamp(),
+        type: 'tweet'
       })
 
     //   const imageRef = ref(storage, `images/${docRef.id}`);

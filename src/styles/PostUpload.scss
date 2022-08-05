@@ -34,8 +34,14 @@ input[type="file"] {
 
 .postUpload__button{
     color: black;
+    // :hover{
+    //     background-color: white;
+    // }
 }
 
 .h-6{
     width: 30%;
+    :hover{
+        background-color: white;
+    }
 }

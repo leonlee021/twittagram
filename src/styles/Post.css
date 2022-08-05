@@ -112,4 +112,115 @@ h4 {
   margin: 2px 10px;
   font-weight: bold;
 }
+
+.tweet {
+  border: 1px solid #dadada;
+  border-radius: 2%;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.tweet__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+}
+
+.tweet__words {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  margin-top: 3px;
+}
+
+.tweet__atUsername {
+  font-weight: normal;
+}
+
+.tweet__likeFeature {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tweet__caption {
+  font-size: 1.2rem;
+}
+
+.tweet__likeFeature {
+  margin-left: 45px;
+}
+
+.tweet__commentbutton {
+  color: white;
+  padding: 7px 15px;
+  background-color: #49b6ff;
+  font-family: 'Mukta', sans-serif;
+  font-weight: bold;
+  font-size: 1.0rem;
+  border-radius: 40%;
+  margin: 10px;
+  margin-top: 0;
+  cursor: pointer;
+}
+
+.tweet__commentbox {
+  padding: 10px;
+  width: 90%;
+  height: 30px;
+  font-size: 1rem;
+  background-color: white;
+}
+
+.tweet__comments {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 96%;
+  margin: 10px;
+  margin-bottom: 0;
+  gap: 10px;
+  padding-top: 15px;
+}
+
+.tweet__commentscroll {
+  max-height: 130px;
+  overflow-y: scroll;
+}
+
+.tweet__commentelement {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0px 10px;
+  padding-top: 7px;
+  margin-left: 0;
+}
+
+.tweet__comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 96%;
+  margin: 10px;
+  margin-bottom: 0;
+  gap: 10px;
+  padding-top: 15px;
+}
 /*# sourceMappingURL=Post.css.map */
