@@ -1,0 +1,91 @@
+import React, { useState, useRef } from 'react'
+// import Button from '@mui/material/Button';
+import { storage, db, ref } from './firebase'
+import { collection, serverTimestamp, addDoc, updateDoc, doc } from '@firebase/firestore';
+import { getDownloadURL, uploadString } from '@firebase/storage';
+import Box from '@mui/material/Box';
+import Input from '@mui/material/Input';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import './styles/TweetUpload.css'
+import { PhotographIcon } from '@heroicons/react/solid'
+import { Avatar } from '@mui/material'
+
+
+function TweetUpload({username}) {
+    const filePickerRef = useRef(null);
+    const [loading, setLoading] = useState(false);
+    const captionRef = useRef(null);
+    const [selectedFile, setSelectedFile] = useState(null)
+    const [openTweet, setOpenTweet] = useState(false);
+
+    const handleChange = (e) => {
+      const reader = new FileReader();
+        if (e.target.files[0]){
+            reader.readAsDataURL(e.target.files[0]);
+        }
+
+        reader.onload = (readerEvent) => {
+          setSelectedFile(readerEvent.target.result);
+        }
+    }
+
+    const handleTweetUpload = async () => {
+      if (loading) return;
+      setLoading(true);
+
+      const docRef = await addDoc(collection(db, 'posts'),{
+        username: username,
+        caption: captionRef.current.value,
+        timestamp: serverTimestamp()
+      })
+
+    //   const imageRef = ref(storage, `images/${docRef.id}`);
+
+    //   await uploadString(imageRef, selectedFile,"data_url").then(async snapshot => {
+    //     const downloadURL = await getDownloadURL(imageRef);
+
+    //     await updateDoc(doc(db, 'posts', docRef.id),{
+    //       imageURL: downloadURL
+    //     })
+    //   })
+
+      setOpenTweet(false)
+      setLoading(false)
+      setSelectedFile(null)
+    }
+
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+        };
+  return (
+    <div>
+        <form className="tweetUpload__post">
+            <div className="tweetUpload__tweetLine">
+                <Avatar
+                        className="post__avatar"
+                        alt={username}
+                        src='/static/images/avatar/1.jpg'
+                    />
+                <input
+                    type = 'text'
+                    placeholder = "What's happening?"
+                    className = 'tweetUpload__tweetContent'
+                    ref = {captionRef}
+                />
+            </div>
+            <div className="tweetUpload__buttonLine"><button type = "button" className = "tweetUpload__button" onClick = {handleTweetUpload}>Tweet</button></div>
+        </form>
+    </div>
+  )
+}
+
+export default TweetUpload

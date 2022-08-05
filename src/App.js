@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { signInWithEmailAndPassword, signOut } from '@firebase/auth';
 import PostUpload from './PostUpload'
+import TweetUpload from './TweetUpload'
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -89,6 +90,9 @@ function App() {
       </div>
       <div className="app__feed">
         <div className="app__scroll">
+          {user ? (
+                <TweetUpload username = {user.displayName}/> 
+              ): ('')}
           {
             user ? (
             posts.map(({id, post}) => (

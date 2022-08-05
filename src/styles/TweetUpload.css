@@ -1,0 +1,89 @@
+.tweetUpload__post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #dadada;
+  border-radius: 2%;
+  margin-bottom: 20px;
+}
+
+.tweetUpload__tweetContent {
+  padding: 10px;
+  width: 90%;
+  height: 30px;
+  font-size: 1.5rem;
+  background-color: white;
+}
+
+.tweetUpload__file {
+  padding: 6px 12px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.h-5 {
+  width: 15%;
+}
+
+.tweetUpload__image {
+  width: 150px;
+}
+
+.tweetUpload__button {
+  color: white;
+  padding: 7px 15px;
+  background-color: #49b6ff;
+  font-family: 'Mukta', sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 40%;
+  margin: 10px;
+  margin-top: 0;
+  cursor: pointer;
+}
+
+.h-6 {
+  width: 30%;
+}
+
+.tweetUpload__tweetLine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 96%;
+  margin: 10px;
+  margin-bottom: 0;
+  gap: 10px;
+  padding-top: 15px;
+}
+
+.tweetUpload__buttonLine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  width: 95%;
+}
+/*# sourceMappingURL=TweetUpload.css.map */

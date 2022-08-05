@@ -1,0 +1,71 @@
+.tweetUpload__post{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 2%;
+    margin-bottom: 20px;
+    // padding-bottom: 10px;
+}
+
+.tweetUpload__tweetContent{
+    padding: 10px;
+    width: 90%;
+    height: 30px;
+    font-size: 1.5rem;
+    // border: 1px solid black;
+    background-color: white
+}
+
+.tweetUpload__file{
+    padding: 6px 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.h-5{
+    width: 15%;
+}
+
+.tweetUpload__image{
+    width: 150px;
+}
+
+.tweetUpload__button{
+    color: rgb(255, 255, 255);
+    padding: 7px 15px;
+    background-color: rgb(73, 182, 255);
+    font-family: 'Mukta', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 40%;
+    margin: 10px;
+    margin-top: 0;
+    cursor: pointer;
+}
+
+.h-6{
+    width: 30%;
+}
+
+.tweetUpload__tweetLine{
+    display: flex;
+    width: 96%;
+    margin: 10px;
+    margin-bottom: 0;
+    gap: 10px;
+    padding-top: 15px;
+}
+
+.tweetUpload__buttonLine{
+    display: flex;
+    justify-content: end;
+    width: 95%;
+}
