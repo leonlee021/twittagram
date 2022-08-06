@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/instagram-twitter-mash/static/css/main.e8a598b7.css",
-    "main.js": "/instagram-twitter-mash/static/js/main.7592ac2f.js",
+    "main.css": "/instagram-twitter-mash/static/css/main.4da933ff.css",
+    "main.js": "/instagram-twitter-mash/static/js/main.2b94b451.js",
     "static/js/787.9ab40314.chunk.js": "/instagram-twitter-mash/static/js/787.9ab40314.chunk.js",
     "static/media/logo.svg": "/instagram-twitter-mash/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/instagram-twitter-mash/index.html",
-    "main.e8a598b7.css.map": "/instagram-twitter-mash/static/css/main.e8a598b7.css.map",
-    "main.7592ac2f.js.map": "/instagram-twitter-mash/static/js/main.7592ac2f.js.map",
+    "main.4da933ff.css.map": "/instagram-twitter-mash/static/css/main.4da933ff.css.map",
+    "main.2b94b451.js.map": "/instagram-twitter-mash/static/js/main.2b94b451.js.map",
     "787.9ab40314.chunk.js.map": "/instagram-twitter-mash/static/js/787.9ab40314.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e8a598b7.css",
-    "static/js/main.7592ac2f.js"
+    "static/css/main.4da933ff.css",
+    "static/js/main.2b94b451.js"
   ]
 }
