@@ -5,7 +5,9 @@ import { addDoc, serverTimestamp, collection, doc, onSnapshot, orderBy, query, s
 import { db } from './firebase'
 import Moment from 'react-moment';
 import 'moment-timezone';
-import { HeartIcon } from '@heroicons/react/solid'
+import { HeartIcon, BookmarkIcon, ChatIcon, PaperAirplaneIcon, ChatAltIcon, RefreshIcon, UploadIcon } from '@heroicons/react/outline'
+import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid'
+import { width } from '@mui/system';
 
 function Post({ id, username, imageURL, caption, commenter, type, timestamp }) {
   const [comment, setComment] = useState('');
@@ -75,16 +77,19 @@ function Post({ id, username, imageURL, caption, commenter, type, timestamp }) {
           <h3 className="post__username">{username}</h3>
       </div>
       <img className="post__image" src={imageURL} alt=''></img>
-      {hasLiked ? (
-        <svg xmlns="http://www.w3.org/2000/svg" id="likeButtonFilled" viewBox="0 0 20 20" fill="currentColor" onClick={likePost}>
-          <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-        </svg>
-      ): (
-        <svg xmlns="http://www.w3.org/2000/svg" id="likeButton" viewBox="0 0 20 20" fill="currentColor" onClick={likePost}>
-          <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-        </svg>
-      )
-      }
+      <div class="post__iconFullRow">
+        <div className="post__iconRow">
+          {hasLiked ? (
+            <HeartIconFilled id="likeButtonFilled" onClick={likePost} />
+          ): (
+            <HeartIcon id="likeButton" onClick={likePost} />
+          )
+          }
+          <ChatIcon className="btn"/>
+          <PaperAirplaneIcon className="btn"/>
+        </div>
+        <BookmarkIcon className="btn" id="bookmarkIcon"/>
+      </div>
       {likes.length > 0 && (
         <p className="post__likesCount">{likes.length} likes</p>
       )}
@@ -122,39 +127,38 @@ function Post({ id, username, imageURL, caption, commenter, type, timestamp }) {
       ):''}
     </div>
       ) : (
-        // tweet
+        // TWEET
         <div className="tweet"> 
-          <div className="tweet__header">
-              <Avatar
-                  className="tweet__avatar"
-                  alt={username}
-                  src='/static/images/avatar/1.jpg'
-              />
-              <div class="tweet__words">
-                <div className="tweet__usernameAndTime">
-                  <h3 className="tweet__username">{username} <span className="tweet__atUsername">@{username}</span>&nbsp;&nbsp;•</h3>
-                  <Moment fromNow>
-                    {timestamp?.toDate()}
-                  </Moment>
+          <div className="tweet__body">
+            <div className="tweet__header">
+                <Avatar
+                    className="tweet__avatar"
+                    alt={username}
+                    src='/static/images/avatar/1.jpg'
+                />
+                <div class="tweet__words">
+                  <div className="tweet__usernameAndTime">
+                    <h3 className="tweet__username">{username} <span className="tweet__atUsername">@{username}</span>&nbsp;&nbsp;•</h3>
+                    <Moment fromNow>
+                      {timestamp?.toDate()}
+                    </Moment>
+                  </div>
+                  <h4 className="tweet__caption">{caption}</h4>
                 </div>
-                <h4 className="tweet__caption">{caption}</h4>
+            </div>
+              <div className="tweet__iconLine">
+                <ChatAltIcon className="tweetbtn"/>
+                <RefreshIcon className="tweetbtn"/>
+                <div class="tweet__likeFeature">
+                  {hasLiked ? (
+                    <HeartIconFilled id="likeButtonFilled" onClick={likePost} className="tweetbtn" />
+                  ): (
+                    <HeartIcon id="likeButton" onClick={likePost} className="tweetbtn"/>
+                  )
+                  }
+                </div>
+                <UploadIcon className="tweetbtn"/>
               </div>
-          </div>
-          <div class="tweet__likeFeature">
-            {hasLiked ? (
-              <svg xmlns="http://www.w3.org/2000/svg" id="likeButtonFilled" viewBox="0 0 20 20" fill="currentColor" onClick={likePost}>
-                <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-              </svg>
-            ): (
-              <svg xmlns="http://www.w3.org/2000/svg" id="likeButton" viewBox="0 0 20 20" fill="currentColor" onClick={likePost}>
-                <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-              </svg>
-            )
-            }
-            {/* {likes.length > 0 && (
-              <p className="post__likesCount">{likes.length}</p>
-            )} */}
-
           </div>
           {comments.length > 0 && (
           <div className="tweet__commentscroll">
@@ -169,15 +173,29 @@ function Post({ id, username, imageURL, caption, commenter, type, timestamp }) {
                         src='/static/images/avatar/1.jpg'
                     />
                     <div class="tweet__words">
-                      <h3 className="tweet__username">{comment.data().username.commenter} <span className="tweet__atUsername">@{comment.data().username.commenter}</span></h3>
+                      <div className="tweet__commentTime">
+                        <h3 className="tweet__username">{comment.data().username.commenter} <span className="tweet__atUsername">@{comment.data().username.commenter}</span>&nbsp;&nbsp;•</h3>
+                        <Moment fromNow>
+                          {comment.data().timestamp?.toDate()}
+                        </Moment>
+                      </div>
                       <h4 className="tweet__caption">{comment.data().comment}</h4>
+                      {/* <div className="tweet__iconLineComment">
+                        <ChatAltIcon className="tweetbtn"/>
+                        <RefreshIcon className="tweetbtn"/>
+                        <div class="tweet__likeFeature">
+                          {hasLiked ? (
+                            <HeartIconFilled id="likeButtonFilled" onClick={likePost} className="tweetbtn" />
+                          ): (
+                            <HeartIcon id="likeButton" onClick={likePost} className="tweetbtn"/>
+                          )
+                          }
+                        </div>
+                        <UploadIcon className="tweetbtn"/>
+                      </div> */}
                     </div>
-                    {/* <span><b>{comment.data().username.commenter}</b></span> {comment.data().comment} */}
                   </p>
                 </div>
-                <Moment fromNow>
-                  {comment.data().timestamp?.toDate()}
-                </Moment>
               </div>
             ))}
           </div>

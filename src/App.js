@@ -86,13 +86,13 @@ function App() {
         <a href="#"><h1>Twittagram</h1></a>
         {user ? (
               <PostUpload username = {user.displayName}/> 
-            ): ('')}
+            ): <PostUpload/>}
       </div>
       <div className="app__feed">
         <div className="app__scroll">
           {user ? (
                 <TweetUpload username = {user.displayName}/> 
-              ): ('')}
+              ): <TweetUpload />}
           {
             user ? (
             posts.map(({id, post}) => (

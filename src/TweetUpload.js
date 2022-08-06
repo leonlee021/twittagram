@@ -29,19 +29,8 @@ function TweetUpload({username}) {
         type: 'tweet'
       })
 
-    //   const imageRef = ref(storage, `images/${docRef.id}`);
-
-    //   await uploadString(imageRef, selectedFile,"data_url").then(async snapshot => {
-    //     const downloadURL = await getDownloadURL(imageRef);
-
-    //     await updateDoc(doc(db, 'posts', docRef.id),{
-    //       imageURL: downloadURL
-    //     })
-    //   })
-
       setOpenTweet(false)
       setLoading(false)
-      setSelectedFile(null)
     }
 
     const style = {

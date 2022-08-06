@@ -47,13 +47,6 @@ input[type="file"] {
 
 .postUpload__button {
   color: black;
-}
-
-.h-6 {
-  width: 30%;
-}
-
-.h-6 :hover {
-  background-color: white;
+  width: 150px;
 }
 /*# sourceMappingURL=PostUpload.css.map */

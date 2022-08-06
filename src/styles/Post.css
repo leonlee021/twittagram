@@ -92,20 +92,8 @@ h4 {
   padding: 0px 10px;
   padding-top: 7px;
   margin-left: 0;
-}
-
-#likeButton {
-  width: 5%;
-  margin: 2px 10px;
-  cursor: pointer;
-  color: silver;
-}
-
-#likeButtonFilled {
-  color: red;
-  width: 5%;
-  margin: 2px 10px;
-  cursor: pointer;
+  gap: 30px;
+  overflow-wrap: break-word;
 }
 
 .post__likesCount {
@@ -138,6 +126,7 @@ h4 {
           flex-direction: column;
   gap: 10px;
   margin-top: 3px;
+  word-wrap: normal;
 }
 
 .tweet__atUsername {
@@ -155,10 +144,12 @@ h4 {
 
 .tweet__caption {
   font-size: 1.2rem;
+  word-wrap: normal;
+  overflow-wrap: break-word;
 }
 
 .tweet__likeFeature {
-  margin-left: 45px;
+  margin-left: 48px;
 }
 
 .tweet__commentbutton {
@@ -209,8 +200,8 @@ h4 {
       -ms-flex-align: center;
           align-items: center;
   padding: 0px 10px;
-  padding-top: 7px;
   margin-left: 0;
+  margin-right: 0;
 }
 
 .tweet__comment {
@@ -232,5 +223,99 @@ h4 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.tweet__commentTime {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tweet__icons {
+  width: 5%;
+  margin: 2px 10px;
+  cursor: pointer;
+  color: silver;
+}
+
+.tweet__iconLine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.btn {
+  width: 30px;
+  margin: 2px 10px;
+  cursor: pointer;
+}
+
+#likeButton {
+  width: 30px;
+  margin: 2px 10px;
+  cursor: pointer;
+}
+
+#likeButtonFilled {
+  color: red;
+  width: 30px;
+  margin: 2px 10px;
+  cursor: pointer;
+}
+
+.post__iconRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3px;
+}
+
+.post__iconFullRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 7px 0px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tweet__body {
+  border-bottom: 1px solid #dadada;
+  padding-bottom: 15px;
+}
+
+.tweet__iconLine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px 45px;
+  color: #686868;
+}
+
+.tweetbtn {
+  width: 25px !important;
+  margin: 2px 10px;
+  cursor: pointer;
+}
+
+.tweet__iconLineComment {
+  width: 200% !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px 0px;
+  margin-right: 0 !important;
+  color: #686868;
 }
 /*# sourceMappingURL=Post.css.map */
