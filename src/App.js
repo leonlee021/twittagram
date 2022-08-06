@@ -13,6 +13,7 @@ import Modal from '@mui/material/Modal';
 import { signInWithEmailAndPassword, signOut } from '@firebase/auth';
 import PostUpload from './PostUpload'
 import TweetUpload from './TweetUpload'
+import { HeartIcon, BookmarkIcon, ChatIcon, PaperAirplaneIcon, ChatAltIcon, RefreshIcon, UploadIcon, HomeIcon } from '@heroicons/react/outline'
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -84,9 +85,13 @@ function App() {
     <div className="app">
       <div className="app__header">
         <a href="#"><h1>Twittagram</h1></a>
-        {user ? (
-              <PostUpload username = {user.displayName}/> 
-            ): <PostUpload/>}
+        <div className="app__headerLogos">
+          <HomeIcon className="app__logo"/>
+          <PaperAirplaneIcon className="app__logo"/>
+          {user ? (
+                <PostUpload username = {user.displayName}/>
+              ): <PostUpload/>}
+        </div>
       </div>
       <div className="app__feed">
         <div className="app__scroll">

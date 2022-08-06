@@ -5,7 +5,7 @@ import { addDoc, serverTimestamp, collection, doc, onSnapshot, orderBy, query, s
 import { db } from './firebase'
 import Moment from 'react-moment';
 import 'moment-timezone';
-import { HeartIcon, BookmarkIcon, ChatIcon, PaperAirplaneIcon, ChatAltIcon, RefreshIcon, UploadIcon } from '@heroicons/react/outline'
+import { HeartIcon, BookmarkIcon, ChatIcon, PaperAirplaneIcon, ChatAltIcon, RefreshIcon, UploadIcon, HomeIcon } from '@heroicons/react/outline'
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid'
 import { width } from '@mui/system';
 
