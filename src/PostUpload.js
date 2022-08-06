@@ -72,9 +72,9 @@ function PostUpload({username}) {
   return (
       <div>
           <label className="postUpload__upload">
-            <Button className = "postUpload__button" onClick={() => setOpenPost(true)}>
+            <button className = "postUpload__button" onClick={() => setOpenPost(true)}>
               <PlusCircleIcon className="postUpload__plusCircle"/>
-            </Button>
+            </button>
           </label>
             <Modal
               open={openPost}
@@ -105,7 +105,7 @@ function PostUpload({username}) {
                       className = 'postUpload__caption'
                       ref = {captionRef}
                     />
-                    <Button type = "button" onClick = {handlePostUpload}>Upload</Button>
+                    <button type = "button" onClick = {handlePostUpload} className="uploadButton">Upload</button>
                   </form>
                 </Typography>
               </Box>

@@ -46,14 +46,26 @@ input[type="file"] {
 }
 
 .postUpload__button {
-  color: black;
-}
-
-.postUpload__button :hover {
   background-color: white;
 }
 
 .postUpload__plusCircle {
+  background-color: transparent;
+  color: black;
   width: 30px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.uploadButton {
+  color: #0051ff;
+  margin: 10px 0px;
+  cursor: pointer;
+  background-color: white;
+  font-size: 1.2rem;
+  font-family: 'Mukta', sans-serif;
+  padding: 10px;
+  border-radius: 50%;
+  font-weight: 900;
 }
 /*# sourceMappingURL=PostUpload.css.map */

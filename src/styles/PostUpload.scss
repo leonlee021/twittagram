@@ -33,13 +33,30 @@ input[type="file"] {
 }
 
 .postUpload__button{
-    color: black;
+    background-color: white;
     // width: 150px;
-    :hover{
-        background-color: white;
-    }
+    // :hover{
+    //     background-color: white;
+    // }
 }
 
 .postUpload__plusCircle{
+    background-color: transparent;
+    color: black;
     width: 30px;
+    cursor: pointer;
+    background-color: white;
+
+}
+
+.uploadButton{
+    color: rgb(0, 81, 255);
+    margin: 10px 0px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    font-family: 'Mukta', sans-serif;
+    padding: 10px;
+    border-radius: 50%;
+    font-weight: 900;
 }

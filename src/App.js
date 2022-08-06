@@ -86,8 +86,10 @@ function App() {
       <div className="app__header">
         <a href="#"><h1>Twittagram</h1></a>
         <div className="app__headerLogos">
-          <HomeIcon className="app__logo"/>
-          <PaperAirplaneIcon className="app__logo"/>
+          <div className="homePaperIcon">
+            <HomeIcon className="app__logo"/>
+            <PaperAirplaneIcon className="app__logo"/>
+          </div>
           {user ? (
                 <PostUpload username = {user.displayName}/>
               ): <PostUpload/>}
