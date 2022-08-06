@@ -146,6 +146,7 @@ h4 {
   font-size: 1.2rem;
   word-wrap: normal;
   overflow-wrap: break-word;
+  margin: 15px 0px;
 }
 
 .tweet__likeFeature {
