@@ -10,8 +10,14 @@ h4{
 .post__header{
     display: flex;
     align-items: center;
-    gap: 8px;
     padding: 10px;
+    justify-content: space-between;
+}
+
+.post__headerUser{
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .post__caption{
@@ -256,4 +262,20 @@ h4{
     margin: 5px 0px;
     margin-right: 0 !important;
     color: rgb(104, 104, 104);
+}
+
+.post__deleteModal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#post__deleteButton{
+    width: 27px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2rem;
 }

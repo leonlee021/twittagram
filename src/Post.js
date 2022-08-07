@@ -5,15 +5,23 @@ import { addDoc, serverTimestamp, collection, doc, onSnapshot, orderBy, query, s
 import { db } from './firebase'
 import Moment from 'react-moment';
 import 'moment-timezone';
-import { HeartIcon, BookmarkIcon, ChatIcon, PaperAirplaneIcon, ChatAltIcon, RefreshIcon, UploadIcon, HomeIcon } from '@heroicons/react/outline'
+import { HeartIcon, BookmarkIcon, ChatIcon, PaperAirplaneIcon, ChatAltIcon, RefreshIcon, UploadIcon, HomeIcon, TrashIcon } from '@heroicons/react/outline'
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid'
 import { width } from '@mui/system';
+import Box from '@mui/material/Box';
+import Input from '@mui/material/Input';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import './styles/PostUpload.css'
+import { PhotographIcon } from '@heroicons/react/solid'
+import { PlusCircleIcon } from '@heroicons/react/outline'
 
 function Post({ id, username, imageURL, caption, commenter, type, timestamp }) {
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
 
   useEffect(() => 
     onSnapshot(
@@ -64,17 +72,54 @@ function Post({ id, username, imageURL, caption, commenter, type, timestamp }) {
     }
   }
 
+  const deletePost = async (e) => {
+    deleteDoc(doc(db,'posts',{id}["id"]))
+  }
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
+
+
   return (
     <>
       { type === 'insta' ? (
+        // insta
       <div className="post"> 
       <div className="post__header">
-          <Avatar
-              className="post__avatar"
-              alt={username}
-              src='/static/images/avatar/1.jpg'
-          />
-          <h3 className="post__username">{username}</h3>
+          <div className="post__headerUser">
+            <Avatar
+                className="post__avatar"
+                alt={username}
+                src='/static/images/avatar/1.jpg'
+            />
+            <h3 className="post__username">{username}</h3>
+          </div>
+          {username===commenter && 
+            <TrashIcon id="post__deleteButton" onClick={() => setOpenDelete(true)}/>
+          }
+          <Modal
+          open={openDelete}
+          onClose={() => setOpenDelete(false)}
+          >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+                <div className="post__deleteModal">
+                  <p>Are you sure?</p>
+                  <button type = "button" className="uploadButton" onClick={deletePost}>Delete Post</button>
+                </div>
+            </Typography>
+          </Box>
+        </Modal>
       </div>
       <img className="post__image" src={imageURL} alt=''></img>
       <div class="post__iconFullRow">
