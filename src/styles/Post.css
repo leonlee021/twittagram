@@ -348,12 +348,22 @@ h4 {
           justify-content: center;
 }
 
-#post__deleteButton {
+.post__deleteButton {
   width: 27px;
   padding: 5px 10px;
   border-radius: 50%;
   cursor: pointer;
   font-weight: bold;
   font-size: 1.2rem;
+}
+
+.tweet__usernameTimeDelete {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
 }
 /*# sourceMappingURL=Post.css.map */

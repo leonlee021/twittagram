@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './styles/Post.css' 
 import { Avatar } from '@mui/material'
-import { addDoc, serverTimestamp, collection, doc, onSnapshot, orderBy, query, setDoc, deleteDoc } from '@firebase/firestore';
+import { addDoc, serverTimestamp, collection, doc, onSnapshot, orderBy, query, setDoc, deleteDoc, getDoc, documentId, DocumentReference, updateDoc } from '@firebase/firestore';
 import { db } from './firebase'
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -59,7 +59,12 @@ function Post({ id, username, imageURL, caption, commenter, type, timestamp }) {
       comment: commentToSend,
       username: {commenter},
       timestamp: serverTimestamp()
-    });
+    })
+    .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+      updateDoc(docRef,{id: docRef.id})
+      // docRef.update({id: docRef.id})
+    })
   };
 
   const likePost = async (e) => {
@@ -75,6 +80,11 @@ function Post({ id, username, imageURL, caption, commenter, type, timestamp }) {
   const deletePost = async (e) => {
     deleteDoc(doc(db,'posts',{id}["id"]))
   }
+
+  // const deleteComment = async (e) => {
+  //   // deleteDoc(doc(db,'posts',{id}["id"],"comments",{comment}))
+  //   console.log(e.target.id)
+  // }
 
   const style = {
     position: 'absolute',
@@ -105,7 +115,7 @@ function Post({ id, username, imageURL, caption, commenter, type, timestamp }) {
             <h3 className="post__username">{username}</h3>
           </div>
           {username===commenter && 
-            <TrashIcon id="post__deleteButton" onClick={() => setOpenDelete(true)}/>
+            <TrashIcon className="post__deleteButton" onClick={() => setOpenDelete(true)}/>
           }
           <Modal
           open={openDelete}
@@ -182,11 +192,29 @@ function Post({ id, username, imageURL, caption, commenter, type, timestamp }) {
                     src='/static/images/avatar/1.jpg'
                 />
                 <div class="tweet__words">
-                  <div className="tweet__usernameAndTime">
-                    <h3 className="tweet__username">{username} <span className="tweet__atUsername">@{username}</span>&nbsp;&nbsp;•</h3>
-                    <Moment fromNow>
-                      {timestamp?.toDate()}
-                    </Moment>
+                  <div className="tweet__usernameTimeDelete">
+                    <div className="tweet__usernameAndTime">
+                      <h3 className="tweet__username">{username} <span className="tweet__atUsername">@{username}</span>&nbsp;&nbsp;•</h3>
+                      <Moment fromNow>
+                        {timestamp?.toDate()}
+                      </Moment>
+                      </div>
+                      {username===commenter &&
+                      <TrashIcon className="post__deleteButton" onClick={() => setOpenDelete(true)}/>
+                      }
+                      <Modal
+                        open={openDelete}
+                        onClose={() => setOpenDelete(false)}
+                      >
+                      <Box sx={style}>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            <div className="post__deleteModal">
+                              <p>Are you sure?</p>
+                              <button type = "button" className="uploadButton" onClick={deletePost}>Delete Tweet</button>
+                            </div>
+                        </Typography>
+                      </Box>
+                      </Modal>
                   </div>
                   <h4 className="tweet__caption">{caption}</h4>
                 </div>
@@ -223,6 +251,22 @@ function Post({ id, username, imageURL, caption, commenter, type, timestamp }) {
                         <Moment fromNow>
                           {comment.data().timestamp?.toDate()}
                         </Moment>
+                        {/* {comment.data().username.commenter===commenter &&
+                        <TrashIcon className="post__deleteButton" onClick={() => setOpenDelete(true)}/>
+                        }
+                        <Modal
+                          open={openDelete}
+                          onClose={() => setOpenDelete(false)}
+                        >
+                        <Box sx={style}>
+                          <Typography id="modal-modal-title" variant="h6" component="h2">
+                              <div className="post__deleteModal">
+                                <p>Are you sure?</p>
+                                <button type = "button" className="uploadButton" onClick={deleteComment}>Delete Tweet</button>
+                              </div>
+                          </Typography>
+                        </Box>
+                        </Modal> */}
                       </div>
                       <h4 className="tweet__caption">{comment.data().comment}</h4>
                       {/* <div className="tweet__iconLineComment">
