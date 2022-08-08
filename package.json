@@ -1,8 +1,8 @@
 {
-  "name": "instagram-twitter-mash",
+  "name": "twittagram",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://leonlee021.github.io/instagram-twitter-mash",
+  "homepage": "https://leonlee021.github.io/twittagram",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
